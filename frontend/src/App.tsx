@@ -90,7 +90,7 @@ export default function App() {
       {/* top bar */}
       <header className="border-b border-slate-800 px-6 py-4 flex items-center justify-between">
         <h1 className="text-xl font-bold">
-          🛡️ DriveGuard <span className="text-accent">AI</span>
+          🛡️ NeuroDrive <span className="text-accent">AI</span>
         </h1>
         <div className="flex items-center gap-3">
           {sessionId && (

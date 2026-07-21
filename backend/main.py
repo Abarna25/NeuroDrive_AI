@@ -1,4 +1,4 @@
-"""DriveGuard AI backend: FastAPI app, camera pipeline, WebSocket stream."""
+"""NeuroDrive AI backend: FastAPI app, camera pipeline, WebSocket stream."""
 
 import asyncio
 import base64
@@ -108,10 +108,10 @@ class StreamManager:
             self.aggression = AggressionDetector()
             self.executor = ThreadPoolExecutor(max_workers=3)
             self.models_ready = True
-            print("[driveguard] all models loaded")
+            print("[neurodrive] all models loaded")
         except Exception as exc:  # noqa: BLE001
             self.model_load_error = str(exc)
-            print(f"[driveguard] model loading failed: {exc}")
+            print(f"[neurodrive] model loading failed: {exc}")
 
     # ── session lifecycle ────────────────────────────────────────────
 
@@ -186,10 +186,10 @@ class StreamManager:
                 "by another application, and that camera permissions are enabled."
             )
             self.capture_running = False
-            print(f"[driveguard] {self.camera_error}")
+            print(f"[neurodrive] {self.camera_error}")
             return
 
-        print("[driveguard] camera opened, pipeline running")
+        print("[neurodrive] camera opened, pipeline running")
         try:
             while self.capture_running:
                 ok, frame = cap.read()
@@ -199,13 +199,13 @@ class StreamManager:
                 try:
                     payload = self._process_frame(frame)
                 except Exception as exc:  # noqa: BLE001 - a bad frame must not kill the loop
-                    print(f"[driveguard] frame processing failed: {exc}")
+                    print(f"[neurodrive] frame processing failed: {exc}")
                     continue
                 with self._latest_lock:
                     self._latest_payload = payload
         finally:
             cap.release()
-            print("[driveguard] camera released")
+            print("[neurodrive] camera released")
 
     def _process_frame(self, frame):
         # The three detectors run concurrently; each works on the read-only
@@ -296,7 +296,7 @@ async def lifespan(app: FastAPI):
     manager.alert_system.shutdown()
 
 
-app = FastAPI(title="DriveGuard AI", lifespan=lifespan)
+app = FastAPI(title="NeuroDrive AI", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,

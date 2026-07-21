@@ -1,4 +1,4 @@
-# 🛡️ DriveGuard AI
+# 🛡️ NeuroDrive AI
 
 Real-time **Driver Cognitive State Monitor**: a webcam/dashcam feed is analyzed by
 three computer-vision modules — **drowsiness**, **aggression**, and **emotion** —
