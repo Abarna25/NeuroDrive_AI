@@ -1,0 +1,16 @@
+mediapipe==0.10.14
+opencv-python==4.9.0.80
+ultralytics==8.2.0
+torch==2.3.0
+torchvision==0.18.0
+deepface==0.0.93
+tensorflow==2.19.1
+tf-keras==2.19.0
+protobuf==4.25.8
+fastapi==0.111.0
+uvicorn==0.30.0
+sqlalchemy==2.0.30
+pyttsx3==2.90
+numpy==1.26.4
+scipy==1.13.0
+websockets==12.0
